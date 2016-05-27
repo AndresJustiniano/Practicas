@@ -1,0 +1,80 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <stdlib.h>
+#define MAX 100
+using namespace std;
+
+void cargar (int V[MAX], int n);
+void burbuja (int V[MAX], int n);
+void mostrar (int V[MAX], int n);
+float promedio (int V[MAX], int n);
+
+void main()
+{
+	int V[MAX],n;
+	float prom;
+	do
+	{
+		cout << "Ingrese la cantidad de elementos que usara su vector: ";
+		cin  >> n;
+	}while (n<=0||n>MAX);
+	cargar (V,n);
+	burbuja (V,n);
+	mostrar (V,n);
+	prom=promedio (V,n);
+	cout << "El promedio es: " << prom << endl;
+	getch();
+}
+
+void cargar (int V[MAX], int n)
+{
+	int i;
+	for (i=0;i<n;i++)
+	{
+		cout << "Introduzca los valores del Vector." << endl;
+		cout << "V[" << i << "]= ";
+		cin  >> V[i];
+	}
+	getch();
+	system ("cls");
+}
+
+void burbuja (int V[MAX], int n)
+{
+	int i,j,aux;
+	for (i=0;i<(n-1);i++)
+	{
+		for (j=0;j<n-i-1;j++)
+		{
+			if(V[j]>V[j+1])
+			{
+				aux=V[j];
+				V[j]=V[j+1];
+				V[j+1]=aux;
+			}
+		}
+	}
+}
+
+void mostrar (int V[MAX], int n)
+{
+	int i;
+	for (i=0;i<n;i++)
+	{
+		cout << "Vector mostrado Ascendentemente" << endl;
+		cout << "V[" << i << "]= " << V[i] << endl;
+	}
+}
+
+float promedio (int V[MAX], int n)
+{
+	int i,s=0;
+	float pro;
+	for (i=0;i<n;i++)
+	{
+		s=s+V[i];
+		pro=s/n;
+	}
+	return (pro);
+}
