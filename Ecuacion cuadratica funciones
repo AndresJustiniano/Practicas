@@ -1,0 +1,75 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+#define MAX 100
+
+using namespace std;
+
+float determinante (float a, float b, float c);
+void reales (float a, float b, float c, float d, float &x1, float &x2);
+void imaginarias (float a, float b, float d, float &x1, float &x2);
+float unica (float a, float b);
+
+void main()
+{
+	float a,b,c,d,x,b1,b2;
+	do
+	{ 
+		cout << "Ingrese el valor de A: ";
+		cin >> a;
+	}while(a==0);
+	cout << "Ingrese el valor de B: ";
+	cin >> b;
+	cout << "Ingrese el valor de C; ";
+	cin >> c;
+	d=determinante (a,b,c);
+	if (d>0){ 
+		cout << "La ecuacion tiene dos soluciones. " << endl;
+		reales (a,b,c,d,b1,b2);
+		cout << "La solucion X1 es: " << b1 << endl;
+		cout << "La solucion X2 es: " << b2 << endl;
+	}
+	else
+	{
+		if (d=0){
+			cout << " Solucion Unica. " << endl;
+			x=unica (a,b);
+			cout << " La solucion es: " << x << endl;
+		}
+		else
+		{
+			cout << " La ecuacion tiene soluciones imaginarias " << endl;
+			imaginarias (a,b,d,b1,b2);
+			cout << " La solucion X1 es: " << b1 << " + " << "i" << endl;
+			cout << " La solucion x2 es: " << b2 << " - " << "i" << endl;
+		}
+	}
+	getch();
+}
+
+float determinante (float a, float b, float c)
+{
+	float det;
+	det=pow (b,2)-4*a*c;
+	return det;
+}
+
+void reales (float a, float b, float c, float d, float &x1, float &x2)
+{
+	x1=(-b+sqrt(d))/(2*a);
+	x2=(-b-sqrt(d))/(2*a);
+}
+
+void imaginarias (float a, float b, float d, float &x1, float &x2)
+{
+	x1=(-b)/(2*a);
+	x2=(sqrt(d))/(2*a);
+}
+
+float unica (float a, float b)
+{
+	float x;
+	x=-b/(2*a);
+	return x;
+}
