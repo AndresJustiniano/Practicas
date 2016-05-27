@@ -1,0 +1,41 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <stdlib.h>
+#define MAX 100
+using namespace std;
+
+void cargar (int V[MAX], int tam, int n);
+void mostrar (int V[MAX], int tam);
+
+void main()
+{
+	int V[MAX],tam,n;
+	do
+	{
+		cout << "Ingrese la cantidad de elementos del vector: ";
+		cin >> tam;
+	}while(tam<=0||tam>MAX);
+	cout << "Ingrese el numero del que se quieren expresar sus multiplos: ";
+	cin >> n;
+	cargar (V,tam,n);
+	mostrar (V,tam);
+	getch();
+}
+
+void cargar (int V[MAX], int tam, int n)
+{
+	int i;
+	for (i=1;i<=tam;i++)
+	{
+		V[i]=n*i;
+	}
+}
+
+void mostrar (int V[MAX],int tam)
+{
+	cout << " Los datos cargados son:" << endl;
+	int i;
+	for (i=1;i<=tam;i++)
+		cout << "V[" << i << "]= " << V[i] << endl;
+}
